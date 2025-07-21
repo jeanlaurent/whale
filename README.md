@@ -4,3 +4,5 @@ It is a simple nginx app that display a nice whale riding waves.
 
 `docker run -p 80:8080 jeanlaurent/whale`
 open your browser to [http://localhost](http://localhost)
+
+It is a simple container based application that is meant to be used as guinea pig for various docker technology
