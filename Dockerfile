@@ -1,8 +1,11 @@
-FROM nginxinc/nginx-unprivileged:1.27.1-alpine@sha256:380f5fa14ad2400888da70ca5b318759e63cd0bdefa7ee4ffa42fe740d1805e8
-USER root
-RUN apk update && \
-    apk add --no-cache openssl=3.3.2-r0 && \
-    apk add --no-cache libexpat=2.6.3-r0 && \
-    rm -rf /var/cache/apk/*
-USER nginx
-COPY static /usr/share/nginx/html
+FROM node:current-alpine@sha256:01d7eb1371c06c3b3c7cd31ab6a7c7bd00a03f39e8a6bfe4c1ed9e3dd02b3dc7
+RUN apk update && apk add --no-cache \
+    openssl=3.3.4-r0 \
+    libexpat=2.7.0-r0 \
+    && rm -rf /var/cache/apk/*
+COPY package*.json ./
+COPY static/ static/
+COPY index.js index.js
+EXPOSE 3000
+RUN npm ci --only=production
+CMD ["node", "index.js"]
