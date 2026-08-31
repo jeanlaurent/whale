@@ -41,13 +41,15 @@
       opacity: 0.9;
       background-image: url("waves-tiled.png");
       background-repeat: repeat-x;
+      /* the wave tile is drawn blue, rotate its hue to match the orange sea */
+      filter: hue-rotate(185deg);
       animation: scrollX 4s linear infinite
     }
     #sea {
       display: block;
       width:100%;
       padding-bottom: 100%;
-      background-color: #2693cc;
+      background-color: #cc6626;
     }
     #hello {
       display: block;
